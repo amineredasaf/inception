@@ -55,3 +55,12 @@ echo -e "${NC}"
 echo -e "+******************************************************************************************************+\n"
 echo -e "*                                                Finished                                              *\n"
 echo -e "+******************************************************************************************************+\n"
+
+
+
+
+
+# useful cmnds for copy/past m lazy cmon :/
+## sudo cp Cnginx.conf /etc/nginx/nginx.conf
+## systemctl status nginx
+## sudo systemctl reload nginx
