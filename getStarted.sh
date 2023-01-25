@@ -28,13 +28,13 @@ echo -e "${BYellow}"
 sudo apt-get -y update && echo -e "- ${BGreen}[OK] Updated${NC}"
 echo -e "${BYellow}"
 sudo apt-get -y upgrade && echo -e "- ${BGreen}[OK] Upgraded${NC}\n"
-sudo apt-get -y install zsh docker.io curl vim nginx git >> log.info
+sudo apt-get -y install zsh docker.io curl vim git >> log.info
 echo -e "+******************************************************************************************************+\n"
 echo -e "*                                             Docker Setup                                             *\n"
 echo -e "+******************************************************************************************************+\n"
 # ***************************************************************************************************** #
 
-sudo service nginx start && echo -e "- ${BGreen}[OK] nginx is start${NC}"
+# sudo service nginx start && echo -e "- ${BGreen}[OK] nginx is start${NC}"
 sudo chmod 777 /var/run/docker.sock && echo -e "- ${BGreen}[OK] /var/run/docker.sock permisson gived${NC}"
 sudo groupadd docker && echo -e "- ${BGreen}[OK] Docker Group Created${NC}"
 sudo usermod -aG docker ${USER} && echo -e "- ${BGreen}${USER}[OK] added To Docker Group${NC}"
