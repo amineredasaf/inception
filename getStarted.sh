@@ -28,7 +28,7 @@ echo -e "${BYellow}"
 sudo apt-get -y update && echo -e "- ${BGreen}[OK] Updated${NC}"
 echo -e "${BYellow}"
 sudo apt-get -y upgrade && echo -e "- ${BGreen}[OK] Upgraded${NC}\n"
-sudo apt-get -y install zsh docker.io curl vim git >> log.info
+sudo apt-get -y install zsh docker.io curl make vim git >> log.info
 echo -e "+******************************************************************************************************+\n"
 echo -e "*                                             Docker Setup                                             *\n"
 echo -e "+******************************************************************************************************+\n"
