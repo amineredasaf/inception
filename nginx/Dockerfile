@@ -10,10 +10,10 @@ COPY www/ nginx-page
 
 COPY Cnginx.conf /etc/nginx/nginx.conf
 
-# RUN nginx
+RUN nginx
 
-ENTRYPOINT ["echo", "IS RUNNING\n"]
-ENTRYPOINT ["systemctl", "start", "nginx"]
+# ENTRYPOINT ["echo", "IS RUNNING\n"]
+# ENTRYPOINT ["systemctl", "start", "nginx"]
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
 # RUN systemctl reload nginx
