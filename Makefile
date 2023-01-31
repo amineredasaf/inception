@@ -8,6 +8,11 @@ ifndef PORT
 	PORT=8080:8080
 endif
 
+all: NO_INPUT
+
+NO_INPUT:
+	@echo "NO INPUT WAS GIVEN"
+
 build-ng:
 	docker build -t $(NAME) ./nginx
 run-ng:
@@ -38,8 +43,7 @@ containers_IDS = $(shell /usr/bin/cat $(FILE))
 con-clean: all-containers-ids
 	@docker rm -f $(containers_IDS)
 	@rm -f IDSFILE
-####################################
-# entree on the interactive mode for specific container
+##################################### entree on the interactive mode for specific container
 # ID=container-id
 
 ifdef ID
