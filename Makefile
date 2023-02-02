@@ -5,7 +5,7 @@ ifndef NAME
 endif
 
 ifndef PORT
-	PORT=8080:8080
+	PORT=443:443
 endif
 
 all: NO_INPUT
@@ -33,7 +33,7 @@ all-images-ids:
 FILE=IDSFILE
 images_IDS = $(shell /usr/bin/cat $(FILE))	
 img-clean: all-images-ids
-	@docker image rm -f $(images_IDS)
+	@docker image rm $(images_IDS)
 	@rm -f IDSFILE
 #################################### this function delete all containers [warning : use it carefuly]
 all-containers-ids:
