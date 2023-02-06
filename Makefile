@@ -13,9 +13,14 @@ all: NO_INPUT
 NO_INPUT:
 	@echo "NO INPUT WAS GIVEN"
 
-build-ng:
+md-build:
+	docker build -t $(NAME) ./mariadb
+md-run:
+	docker run -it -p $(PORT) $(NAME)
+
+ng-build:
 	docker build -t $(NAME) ./nginx
-run-ng:
+ng-run:
 	docker run -it -p $(PORT) $(NAME)
 
 img-show:
@@ -32,7 +37,7 @@ all-images-ids:
 	@docker image ls -aq > IDSFILE
 FILE=IDSFILE
 images_IDS = $(shell /usr/bin/cat $(FILE))	
-img-clean: all-images-ids
+img-clean: all-images-ids con-clean
 	@docker image rm $(images_IDS)
 	@rm -f IDSFILE
 #################################### this function delete all containers [warning : use it carefuly]
