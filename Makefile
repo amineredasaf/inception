@@ -37,7 +37,7 @@ all-images-ids:
 	@docker image ls -aq > IDSFILE
 FILE=IDSFILE
 images_IDS = $(shell /usr/bin/cat $(FILE))	
-img-clean: all-images-ids con-clean
+img-clean: all-images-ids
 	@docker image rm $(images_IDS)
 	@rm -f IDSFILE
 #################################### this function delete all containers [warning : use it carefuly]
