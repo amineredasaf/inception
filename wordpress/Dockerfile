@@ -13,4 +13,6 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 
 RUN wp core download --path=/var/www/ --allow-root
 
+RUN wp config create --path=/var/www/ --dbname=_DataBase --dbuser=_userRsaf --dbpass=root --allow-root
+
 ENTRYPOINT ["/bin/bash"]
