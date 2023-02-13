@@ -1,24 +1,23 @@
-
+version: '3'
 services:
-	nginx:
-		build: /nginx/.
-		image: nginx
-		networks:
-			- shared-network
-		port :
-			-	"443:443"
-	mariadb:
-		build: /mariadb/.
-		image: mariadb
-		networks:
-			- shared-network
-	wordpress:
-		build: /wordpress/.
-		image: wordpress
-		networks:
-			- shared-network
-		port :
-			- 9000
-
+ nginx:
+  build: nginx/.
+  image: nginx
+  networks:
+   - shared-network
+  ports :
+   - "443:443"
+ mariadb:
+  build: mariadb/.
+  image: mariadb
+  networks:
+   - shared-network
+ wordpress:
+  build: wordpress/.
+  image: wordpress
+  networks:
+   - shared-network
+  ports :
+   - 9000
 networks:
-	shared-network: {}
+ shared-network: {}

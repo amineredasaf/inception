@@ -29,7 +29,7 @@ sudo apt-get -y update && echo -e "- ${BGreen}[OK] Updated${NC}"
 echo -e "${BYellow}"
 sudo apt-get -y upgrade && echo -e "- ${BGreen}[OK] Upgraded${NC}\n"
 sudo apt-get -y install zsh docker.io curl make vim git >> log.info
-sudo echo "127.0.0.1       rsaf.42.fr" > /etc/hosts
+# sudo echo "127.0.0.1       rsaf.42.fr" > /etc/hosts
 echo -e "+******************************************************************************************************+\n"
 echo -e "*                                             Docker Setup                                             *\n"
 echo -e "+******************************************************************************************************+\n"
@@ -38,7 +38,7 @@ echo -e "+**********************************************************************
 # sudo service nginx start && echo -e "- ${BGreen}[OK] nginx is start${NC}"
 sudo chmod 777 /var/run/docker.sock && echo -e "- ${BGreen}[OK] /var/run/docker.sock permisson gived${NC}"
 sudo groupadd docker && echo -e "- ${BGreen}[OK] Docker Group Created${NC}"
-sudo usermod -aG docker ${USER} && echo -e "- ${BGreen}${USER}[OK] added To Docker Group${NC}"
+sudo usermod -aG docker ${USER} && echo -e "- ${BGreen}[OK] ${USER} added To Docker Group${NC}"
 
 # ***************************************************************************************************** #
 getent group docker > DockerGroupUsers.info && echo -e "- ${BGreen}[OK] Docker Group with Users Created${NC}"
