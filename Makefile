@@ -1,37 +1,39 @@
 
-
+####################################
 ifndef NAME
-	NAME=default
+	NG=nginx:testing
+	WP=wordpress:testing
+	MD=mariadb:testing
+	NAME=$(WP)
 endif
-
 ifndef PORT
 	PORT=443:443
 endif
-
+####################################
 all: NO_INPUT
-
+####################################
 NO_INPUT:
 	@echo "NO INPUT WAS GIVEN"
-
+####################################
+wp-build:
+	docker build -t $(WP) ./wordpress
 md-build:
-	docker build -t $(NAME) ./mariadb
-md-run:
-	docker run -it -p $(PORT) $(NAME)
-
+	docker build -t $(MD) ./mariadb
 ng-build:
-	docker build -t $(NAME) ./nginx
-ng-run:
+	docker build -t $(NG) ./nginx
+####################################
+run:
 	docker run -it -p $(PORT) $(NAME)
-
+####################################
 img-show:
 	@docker images
 con-show:
 	@docker ps -a
+####################################
 start:
 	./getStarted.sh
 clean:
 	rm -f *.info IDSFILE
-
 #################################### this function delete all containers [warning : use it carefuly]
 all-images-ids:
 	@docker image ls -aq > IDSFILE
@@ -59,5 +61,7 @@ bash:
 	@echo "ERROR: ID is not defined"
 endif
 
+prune:
+	docker system prune -a
 # docker image rm $(docker image ls -aq)
 #  docker container rm $(docker container ls -aq)

@@ -1,23 +1,38 @@
 version: '3'
 services:
  nginx:
+  container_name: nginx
   build: nginx/.
-  image: nginx
+  # image: nginx
   networks:
    - shared-network
   ports :
    - "443:443"
  mariadb:
+  container_name: mariadb
   build: mariadb/.
-  image: mariadb
+  # image: mariadb
+
   networks:
    - shared-network
  wordpress:
+  container_name: wordpress
   build: wordpress/.
-  image: wordpress
+  volumes:
+    - wp_data:/var/www/html
+  # image: wordpress
+  depends_on:
+   - mariadb
   networks:
    - shared-network
   ports :
-   - 9000
+   - "9000"
 networks:
  shared-network: {}
+
+volumes:
+    wp_data:
+      driver_opts:
+        type: local
+        device: /home/rsaf/data
+        o: bind

@@ -17,9 +17,4 @@ RUN openssl req -x509 -newkey rsa:4096 -sha256 -days 365 -nodes \
 
 RUN nginx
 
-# ENTRYPOINT ["echo", "IS RUNNING\n"]
-# ENTRYPOINT ["systemctl", "start", "nginx"]
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
-
-# RUN systemctl reload nginx
-
