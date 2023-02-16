@@ -3,10 +3,15 @@ services:
  nginx:
   container_name: nginx
   build: nginx/.
+  depends_on:
+   - wordpress
   networks:
    - shared-network
+  volumes:
+   - wp_data:/var/www/html 
   ports :
    - "443:443"
+   - "9000"
 
 
 

@@ -15,6 +15,6 @@ RUN openssl req -x509 -newkey rsa:4096 -sha256 -days 365 -nodes \
     -out ./etc/nginx/cert.key -subj \
     "/C=MA/L=KH/O=1337/OU=student/CN=rsaf.42.com"
 
-RUN nginx
+# RUN nginx
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
