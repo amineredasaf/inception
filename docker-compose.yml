@@ -3,30 +3,36 @@ services:
  nginx:
   container_name: nginx
   build: nginx/.
-  # image: nginx
   networks:
    - shared-network
   ports :
    - "443:443"
+
+
+
  mariadb:
   container_name: mariadb
   build: mariadb/.
-  # image: mariadb
-
   networks:
    - shared-network
+  ports:
+    - 3306
+
+
  wordpress:
   container_name: wordpress
+  depends_on:
+    - mariadb
   build: wordpress/.
   volumes:
     - wp_data:/var/www/html
-  # image: wordpress
   depends_on:
    - mariadb
   networks:
    - shared-network
   ports :
    - "9000"
+
 networks:
  shared-network: {}
 

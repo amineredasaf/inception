@@ -15,6 +15,9 @@ all: NO_INPUT
 NO_INPUT:
 	@echo "NO INPUT WAS GIVEN"
 ####################################
+
+build:
+	docker-compose up --build
 wp-build:
 	docker build -t $(WP) ./wordpress
 md-build:

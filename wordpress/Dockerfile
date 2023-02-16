@@ -7,7 +7,6 @@ RUN apt install -y php7.3 && \
     apt install -y php7.3-mysql && \
     apt install -y wget
 
-RUN mkdir -p /var/www/html
 
 COPY ./config.sh /
 
@@ -27,3 +26,11 @@ RUN sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3
 # RUN ./config.sh
 
 ENTRYPOINT ./config.sh
+# RUN mkdir -p var/www/html
+
+# RUN chown -R www-data:www-data /var/www/html
+
+# RUN wp core download --path=/var/www/html --allow-root && wp config create --path=/var/www/html --dbname=db --dbuser=rsaf --dbhost=mariadb --dbpass=rsaf --allow-root
+
+# RUN wp core install --allow-root --url="rsaf.42.fr" --title="rsaf" --admin_user="rsaf" --admin_password="rsaf69" --admin_email="rsaf@gmail.com" --path=/var/www/html 
+# ENTRYPOINT ["/bin/bash"]
