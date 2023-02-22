@@ -17,13 +17,15 @@ NO_INPUT:
 ####################################
 
 build:
-	docker-compose up --build
+	sudo rm -rf /home/rsaf/data/*
+	sudo mkdir /home/rsaf/data/wp_files /home/rsaf/data/wp_database
+	docker-compose --file srs/docker-compose.yml up --build
 wp-build:
-	docker build -t $(WP) ./wordpress
+	docker build -t $(WP) ./srs/requirements/wordpress
 md-build:
-	docker build -t $(MD) ./mariadb
+	docker build -t $(MD) ./srs/requirements/mariadb
 ng-build:
-	docker build -t $(NG) ./nginx
+	docker build -t $(NG) ./srs/requirements/nginx
 ####################################
 run:
 	docker run -it -p $(PORT) $(NAME)
