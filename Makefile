@@ -23,11 +23,9 @@ env:
 db:
 	$(shell	srcs/requirements/mariadb/tools/db_Init.sh)
 build:
-	$(shell  /home/rsaf/Desktop/init.sh)
-	$(shell	srcs/requirements/mariadb/tools/db_Init.sh)
 	sudo rm -rf /home/rsaf/data/*
 	sudo mkdir /home/rsaf/data/wp_files /home/rsaf/data/wp_database
-	docker-compose --file srcs/docker-compose.yml up --build
+	docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml up --build
 wp-build:
 	docker build -t $(WP) ./srcs/requirements/wordpress
 md-build:
