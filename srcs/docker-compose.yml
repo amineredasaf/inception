@@ -17,7 +17,16 @@ services:
 
  mariadb:
   container_name: mariadb
-  build: requirements/mariadb/.
+  build: 
+    context: requirements/mariadb/.
+    args:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_ROOTUSER: ${DB_ROOTUSER}
+      DB_ROOTPASS: ${DB_ROOTPASS}
   networks:
    - shared-network
   ports:
@@ -28,6 +37,7 @@ services:
   container_name: wordpress
   depends_on:
     - mariadb
+  env_file: .env
   build: requirements/wordpress/.
   volumes:
     - wp_data:/var/www/html
@@ -38,6 +48,22 @@ services:
   ports :
    - "9000"
 
+
+# args:
+#   DB_HOST:${DB_HOST}
+#   DB_PORT:${DB_PORT}
+#   DB_NAME:${DB_NAME}
+#   DB_USER:${DB_USER}
+#   DB_PASSWORD:${DB_PASSWORD}
+#   DB_ROOTUSER:${DB_ROOTUSER}
+#   DB_ROOTPASS:${DB_ROOTPASS}
+#   WP_PATH:${DB_PATH}
+#   WP_TITLE:${DB_TITLE}
+#   WP_ADMIN:${DB_ADMIN}
+#   WP_PASS:${DB_PASS}
+#   WP_USER:${DB_USER}
+#   WP_USERPASS:${DB_USERPASS}
+#   WP_EMAIL:${DB_EMAIL}
 networks:
  shared-network: {}
 

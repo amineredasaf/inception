@@ -4,7 +4,7 @@ ifndef NAME
 	NG=nginx:testing
 	WP=wordpress:testing
 	MD=mariadb:testing
-	NAME=$(WP)
+	NAME=$(MD)
 endif
 ifndef PORT
 	PORT=443:443
@@ -16,16 +16,24 @@ NO_INPUT:
 	@echo "NO INPUT WAS GIVEN"
 ####################################
 
+## Script created to build a .env file for easier environment setup, 
+## eliminating the need to manually copy and paste variables every time.
+env:
+	$(shell  /home/rsaf/Desktop/init.sh)
+db:
+	$(shell	srcs/requirements/mariadb/tools/db_Init.sh)
 build:
+	$(shell  /home/rsaf/Desktop/init.sh)
+	$(shell	srcs/requirements/mariadb/tools/db_Init.sh)
 	sudo rm -rf /home/rsaf/data/*
 	sudo mkdir /home/rsaf/data/wp_files /home/rsaf/data/wp_database
-	docker-compose --file srs/docker-compose.yml up --build
+	docker-compose --file srcs/docker-compose.yml up --build
 wp-build:
-	docker build -t $(WP) ./srs/requirements/wordpress
+	docker build -t $(WP) ./srcs/requirements/wordpress
 md-build:
-	docker build -t $(MD) ./srs/requirements/mariadb
+	docker build -t $(MD) ./srcs/requirements/mariadb
 ng-build:
-	docker build -t $(NG) ./srs/requirements/nginx
+	docker build -t $(NG) ./srcs/requirements/nginx
 ####################################
 run:
 	docker run -it -p $(PORT) $(NAME)
