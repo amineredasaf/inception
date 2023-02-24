@@ -15,5 +15,6 @@ COPY tools/db_Init.sh .
 RUN chmod 777 db_Init.sh && ./db_Init.sh
 RUN cat database.sql
 RUN sed -i 's/bind-address            = 127.0.0.1/bind-address = 0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
-# RUN service mysql start && mysql < database.sql
+RUn cat database.sql
+RUN service mysql start && mysql < database.sql
 ENTRYPOINT ["mysqld_safe"]
