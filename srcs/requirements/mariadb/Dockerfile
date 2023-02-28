@@ -10,7 +10,6 @@ ARG DB_ROOTPASS
 RUN apt update -y
 RUN apt install mariadb-server procps -y
 WORKDIR /mariadb
-# COPY database.sql .
 COPY tools/db_Init.sh .
 RUN chmod 777 db_Init.sh && ./db_Init.sh
 RUN cat database.sql

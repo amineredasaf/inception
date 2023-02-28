@@ -2,7 +2,7 @@
 all: up
 
 up:
-	@docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml up
+	@docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml up --build
 
 down:
 	@docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml down
@@ -41,8 +41,8 @@ info:
 
 # ## Script created to build a .env file for easier environment setup, 
 # ## eliminating the need to manually copy and paste variables every time.
-# env:
-# 	$(shell  /home/rsaf/Desktop/init.sh)
+env:
+	$(shell  /home/rsaf/Desktop/init.sh)
 # db:
 # 	$(shell	srcs/requirements/mariadb/tools/db_Init.sh)
 # build:
