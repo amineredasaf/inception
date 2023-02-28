@@ -27,6 +27,8 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_ROOTUSER: ${DB_ROOTUSER}
       DB_ROOTPASS: ${DB_ROOTPASS}
+  volumes:
+    - db_data:/var/lib/mysql
   networks:
    - shared-network
   ports:
@@ -77,4 +79,5 @@ volumes:
       driver_opts:
         type: local
         device: /home/rsaf/data/wp_database
+        o: bind
 
