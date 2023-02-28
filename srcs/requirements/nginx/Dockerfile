@@ -2,7 +2,7 @@ FROM debian:buster
 
 RUN apt-get update -y && apt-get upgrade -y 
 
-RUN apt install -y nginx ; apt install -y systemctl ; apt install -y openssl
+RUN apt install -y nginx ; apt install -y openssl
 
 RUN mkdir nginx-page
 

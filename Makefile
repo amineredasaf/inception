@@ -1,9 +1,27 @@
 
-build:
+all: up
+
+up:
+	docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml up
+
+down:
+	docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml down
+
+stop:
+	docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml stop
+
+start:
+	docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml start
+
+clean:
 	sudo rm -rf /home/rsaf/data/*
 	sudo mkdir /home/rsaf/data/wp_files /home/rsaf/data/wp_database
-	docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml up --build
 
+prune:
+	docker system prune -a
+info:
+	docker ps
+	
 ####################################
 # ifndef NAME
 # 	NG=nginx:testing
@@ -77,7 +95,5 @@ build:
 # 	@echo "ERROR: ID is not defined"
 # endif
 
-prune:
-	docker system prune -a
 # docker image rm $(docker image ls -aq)
 #  docker container rm $(docker container ls -aq)
