@@ -2,25 +2,25 @@
 all: up
 
 up:
-	docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml up
+	@docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml up
 
 down:
-	docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml down
+	@docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml down
 
 stop:
-	docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml stop
+	@docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml stop
 
 start:
-	docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml start
+	@docker-compose --env-file  srcs/.env --file srcs/docker-compose.yml start
 
 clean:
-	sudo rm -rf /home/rsaf/data/*
-	sudo mkdir /home/rsaf/data/wp_files /home/rsaf/data/wp_database
+	@sudo rm -rf /home/rsaf/data/*
+	@sudo mkdir /home/rsaf/data/wp_files /home/rsaf/data/wp_database
 
 prune:
-	docker system prune -a
+	@docker system prune -a
 info:
-	docker ps
+	@docker ps
 	
 ####################################
 # ifndef NAME
@@ -59,10 +59,10 @@ info:
 # run:
 # 	docker run -it -p $(PORT) $(NAME)
 # ####################################
-# img-show:
-# 	@docker images
-# con-show:
-# 	@docker ps -a
+img-show:
+	@docker images
+con-show:
+	@docker ps -a
 # ####################################
 # start:
 # 	./getStarted.sh
