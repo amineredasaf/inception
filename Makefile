@@ -42,7 +42,7 @@ info:
 # ## Script created to build a .env file for easier environment setup, 
 # ## eliminating the need to manually copy and paste variables every time.
 env:
-	$(shell  /home/rsaf/Desktop/init.sh)
+	$(shell  /home/rsaf/Desktop/startupdir/init.sh)
 # db:
 # 	$(shell	srcs/requirements/mariadb/tools/db_Init.sh)
 # build:
