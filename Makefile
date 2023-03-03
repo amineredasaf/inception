@@ -19,9 +19,14 @@ clean:
 
 prune:
 	@docker system prune -a
+
 info:
 	@docker ps
-	
+
+env:
+	cp ../sm4inception/.env ./srcs/.env
+# vo_clean:
+# 	@docker volume rm $(docker volume ls -q)
 ####################################
 # ifndef NAME
 # 	NG=nginx:testing
@@ -41,8 +46,8 @@ info:
 
 # ## Script created to build a .env file for easier environment setup, 
 # ## eliminating the need to manually copy and paste variables every time.
-env:
-	$(shell  /home/rsaf/Desktop/startupdir/init.sh)
+# env:
+# 	$(shell  /home/rsaf/Desktop/startupdir/init.sh)
 # db:
 # 	$(shell	srcs/requirements/mariadb/tools/db_Init.sh)
 # build:
