@@ -7,6 +7,7 @@ services:
    - wordpress
   networks:
    - shared-network
+  restart: on-failure
   volumes:
    - wp_data:/var/www/html 
   ports :
@@ -30,6 +31,7 @@ services:
     - db_data:/var/lib/mysql
   networks:
    - shared-network
+  restart: on-failure
   ports:
     - 3306
 
@@ -63,6 +65,7 @@ services:
    - mariadb
   networks:
    - shared-network
+  restart: on-failure
   ports :
    - "9000"
 networks:
