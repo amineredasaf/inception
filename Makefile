@@ -18,6 +18,7 @@ clean:
 	@sudo mkdir /home/rsaf/data/wp_files /home/rsaf/data/wp_database
 
 prune:
+	@docker volume rm srcs_db_data srcs_wp_data 
 	@docker system prune -a
 
 info:

@@ -71,15 +71,16 @@ services:
 networks:
  shared-network: {}
 
+
 volumes:
     wp_data:
       driver_opts:
-        type: local
+        type : bind
         device: /home/rsaf/data/wp_files
         o: bind
     db_data:
       driver_opts:
-        type: local
+        type: bind
         device: /home/rsaf/data/wp_database
         o: bind
 
