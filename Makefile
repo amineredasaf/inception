@@ -69,6 +69,10 @@ img-show:
 	@docker images
 con-show:
 	@docker ps -a
+vol-show:
+	@docker volume ls
+net-show:
+	@docker network ls
 # ####################################
 # start:
 # 	./getStarted.sh
